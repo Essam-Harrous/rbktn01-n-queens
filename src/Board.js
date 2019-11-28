@@ -96,10 +96,11 @@
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
-      for(var i =0; i <4; i++){
+      console.log(this.attributes.n)
+      for(var i =0; i <this.attributes.n; i++){
         var result = [] 
-         
-        for ( var j =0 ; j< this.get(i).length; j++){
+        
+        for ( var j =0 ; j< this.attributes[i].length; j++){
           if(this.get(i)[j] === 1){
           result.push(this.get(i)[j]);
         }
@@ -135,9 +136,9 @@
 
     // test if any columns on this board contain conflicts
     hasAnyColConflicts: function() {
-      for (var i = 0; i < 4; i++) {
+      for (var i = 0; i < this.attributes.n; i++) {
         var result = [];
-        for(var j = 0; j < 4; j++) {
+        for(var j = 0; j < this.attributes[i].length; j++) {
           if(this.get(j)[i] == 1) {
             result.push(this.get(j)[i]);
           }
@@ -160,8 +161,6 @@
       var ind = majorDiagonalColumnIndexAtFirstRow;
       for(var row=1; row<4; row++){
         for (var col=0; col<4; col++){
-          console.log(this.get(row)[col], 'this');
-          console.log(ind, 'param')
           if (this.get(row)[col]=== 1 && ind === (col - row)){
             return true;
          }
